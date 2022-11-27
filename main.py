@@ -13,8 +13,7 @@ bot = telebot.TeleBot('5644571180:AAHF_bxgRFh3T9Hfs9i9onNhlz20-jF7bR4')
 @bot.message_handler(commands=['start'])
 
 def send_welcome(message):
-    stic = open('C:/Users/kfify/Downloads/TelegramBot/applecatrun-apple-cat.webp', 'rb') #чтение файла в двоичном формате
-
+    stic = open('C:/Users/kfify/Downloads/TelegramBot/applecatrun-apple-cat.webp', 'rb') 
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but1 = types.KeyboardButton("Вывести расписание на сегодня")
     markup.add(but1)
