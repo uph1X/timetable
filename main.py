@@ -6,8 +6,6 @@ from datetime import date
 import calendar
 
 
-# In[14]:
-
 
 bot = telebot.TeleBot('5644571180:AAHF_bxgRFh3T9Hfs9i9onNhlz20-jF7bR4')
 @bot.message_handler(commands=['start'])
