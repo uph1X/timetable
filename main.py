@@ -10,7 +10,7 @@ bot = telebot.TeleBot('5644571180:AAHF_bxgRFh3T9Hfs9i9onNhlz20-jF7bR4')
 @bot.message_handler(commands=['start'])
 
 def send_welcome(message):
-    stic = open('C:/Users/kfify/Downloads/TelegramBot/applecatrun-apple-cat.webp', 'rb') #чтение файла в двоичном формате
+    stic = open('C:/Users/kfify/Downloads/TelegramBot/applecatrun-apple-cat.webp', 'rb') #здесь нужно указать путь к гифке на своём компьютере
 
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but1 = types.KeyboardButton("Вывести расписание на сегодня")
@@ -34,7 +34,7 @@ def menu(message):
             if(weekday >= 5):
                 bot.send_message(message.chat.id, "Ура, выходные!!")
             else:
-                rb = xlrd.open_workbook('C:/Users/kfify/Downloads/TelegramBot/1_KURS_OSEN_2022_g.xls', formatting_info=True)
+                rb = xlrd.open_workbook('C:/Users/kfify/Downloads/TelegramBot/1_KURS_OSEN_2022_g.xls', formatting_info=True) #а здесь путь на расписание
                 sheet = rb.sheet_by_index(weekday)
                 for rownum in range(sheet.nrows):
                     #rand = int(random.randint(0,rownum))
