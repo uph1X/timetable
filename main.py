@@ -3,6 +3,7 @@ from telebot import types
 import random
 import xlrd
 from datetime import date
+from datetime import datetime
 import calendar
 
 
@@ -50,6 +51,18 @@ def menu(message):
                 rb = xlrd.open_workbook('C:/Users/kfify/Downloads/TelegramBot/1_KURS_OSEN_2022_g.xls', formatting_info=True)
                 sheet = rb.sheet_by_index(weekday)
                 for rownum in range(sheet.nrows):
+                    row = sheet.row_values(rownum)
+                    bot.send_message(message.chat.id, row)
+        elif message.text.count(".") == 2:
+            my_date = datetime.strptime(message.text, '%d.%m.%Y').date()
+            weekday = my_date.weekday()
+            if(weekday >= 5):
+                bot.send_message(message.chat.id, "Этот день - выходной")
+            else:
+                rb = xlrd.open_workbook('C:/Users/kfify/Downloads/TelegramBot/1_KURS_OSEN_2022_g.xls', formatting_info=True) #а здесь путь на расписание
+                sheet = rb.sheet_by_index(weekday)
+                for rownum in range(sheet.nrows):
+                    #rand = int(random.randint(0,rownum))
                     row = sheet.row_values(rownum)
                     bot.send_message(message.chat.id, row)
         else:
