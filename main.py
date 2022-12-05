@@ -11,7 +11,7 @@ bot = telebot.TeleBot('5644571180:AAHF_bxgRFh3T9Hfs9i9onNhlz20-jF7bR4')
 @bot.message_handler(commands=['start'])
 
 def send_welcome(message):
-    stic = open('C:/Users/kfify/Downloads/TelegramBot/applecatrun-apple-cat.webp', 'rb') 
+    stic = open('C:/Users/kfify/Downloads/TelegramBot/applecatrun-apple-cat.webp', 'rb') #при скачивании GIF-файла здесь нужно указать путь на него на своём устройстве
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but1 = types.KeyboardButton("Вывести расписание на сегодня")
     markup.add(but1)
