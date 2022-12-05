@@ -14,7 +14,8 @@ def send_welcome(message):
 
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     but1 = types.KeyboardButton("Вывести расписание на сегодня")
-    markup.add(but1)
+    but2 = types.KeyboardButton("Вывести расписание на завтра")
+    markup.add(but1, but2)
 
     bot.reply_to(message, "Привет, {0.first_name}\nДавай посмотрим, чем я могу быть полезен".format(message.from_user)
   ,parse_mode='html',reply_markup=markup)
@@ -40,6 +41,17 @@ def menu(message):
                     row = sheet.row_values(rownum)
                     bot.send_message(message.chat.id, row)
             
+        elif message.text == "Вывести расписание на завтра":
+            my_date = date.today() 
+            weekday = my_date.weekday() + 1
+            if(weekday >= 5):
+                bot.send_message(message.chat.id, "Ура, завтра выходные!!")
+            else:
+                rb = xlrd.open_workbook('C:/Users/kfify/Downloads/TelegramBot/1_KURS_OSEN_2022_g.xls', formatting_info=True)
+                sheet = rb.sheet_by_index(weekday)
+                for rownum in range(sheet.nrows):
+                    row = sheet.row_values(rownum)
+                    bot.send_message(message.chat.id, row)
         else:
             bot.send_message(message.chat.id, "Я не знаю, что и ответить")
 
